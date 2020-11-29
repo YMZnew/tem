@@ -19,6 +19,9 @@ const loadImage = (imageUrl, canvasElement) => {
 
 // matches a template against an original image using a sum of absolute differences (SAD) measure.
 const matchTemplate = (S_w, S_h, S, T_w, T_h, T) => {
+var startDate = new Date();
+// Do your operations
+
     let minSAD = Number.MAX_SAFE_INTEGER;
     
     let posX;
@@ -61,6 +64,9 @@ const matchTemplate = (S_w, S_h, S, T_w, T_h, T) => {
     console.log(posX);
     console.log(posY);
 
+var endDate   = new Date();
+var seconds = (endDate.getTime() - startDate.getTime())
+alert(" YMZ : "+seconds); 
     return { x: posX, y: posY };
 };
 
@@ -76,7 +82,7 @@ $(() => {
             let templateContext = templateCanvas.getContext('2d');
             let templateData    = templateContext.getImageData(0, 0, templateCanvas.width, templateCanvas.height).data
 
-            $('#status').html('Working...');
+          //  $('#status').html('Working...');
 
             setTimeout(
                 () => {
@@ -86,7 +92,7 @@ $(() => {
                         templateCanvas.width, templateCanvas.height, templateData
                     );
 
-                    $('#status').html(`Matched x: ${pos.x}, y: ${pos.y}`);
+                 //   $('#status').html(`Matched x: ${pos.x}, y: ${pos.y}`);
 
                     originalContext.beginPath();
                     originalContext.rect(pos.x, pos.y, templateCanvas.width, templateCanvas.height);
